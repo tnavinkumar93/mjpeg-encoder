@@ -7,6 +7,7 @@ void *dlopen(char const *Fnm, int Flg) {
     void *(*real_dlopen)(char const *, int);
     *(void **) (&real_dlopen) = dlsym(RTLD_NEXT, "dlopen");
     if (Fnm == NULL) {
+        void 
         return real_dlopen(Fnm, Flg);
     } else if (0 == strcmp("/opt/AMDAPPSDK-3.0/lib/x86_64/sdk/libamdocl64.so", Fnm)) {
         return NULL;
@@ -14,3 +15,6 @@ void *dlopen(char const *Fnm, int Flg) {
         return real_dlopen(Fnm, Flg);
     }
 }
+void *dlopen(char const *Fnm, int Flg) {
+    
+
